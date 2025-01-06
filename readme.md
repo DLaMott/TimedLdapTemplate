@@ -5,7 +5,7 @@
 ---
 
 ## 📖 Table of Contents
-- [Introduction](#introduction)
+- [Introduction](#Introduction)
 - [Features](#features)
 - [Why TimedLdapTemplate?](#why-timedldaptemplate)
 - [Getting Started](#getting-started)
@@ -19,7 +19,7 @@
 
 ---
 
-## 🧑‍💻 Introduction
+## Introduction
 
 The `TimedLdapTemplate` class extends Spring's `LdapTemplate` to add instrumentation for tracking the time taken to:
 1. Acquire an LDAP client from the connection pool.
@@ -30,7 +30,7 @@ This enhancement is critical for diagnosing performance issues in systems that r
 
 ---
 
-## ✨ Features
+## Features
 
 - **Transparent Metrics Collection**: Track timing metrics (`acquire`, `search`, `release`) for every LDAP operation.
 - **Drop-in Replacement**: Fully compatible with Spring LDAP's `LdapTemplate`, requiring minimal code changes.
@@ -39,7 +39,7 @@ This enhancement is critical for diagnosing performance issues in systems that r
 
 ---
 
-## ❓ Why TimedLdapTemplate?
+## Why TimedLdapTemplate?
 
 Spring LDAP's `LdapTemplate` provides robust utilities for interacting with LDAP servers but lacks built-in support for monitoring client pool performance. In high-concurrency environments, understanding the time spent on client acquisition, query execution, and client release is crucial for:
 
@@ -51,7 +51,7 @@ Spring LDAP's `LdapTemplate` provides robust utilities for interacting with LDAP
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -68,7 +68,7 @@ implementation 'org.springframework.ldap:spring-ldap-core:<version>'
 ```
 
 
-## 📚 Usage Examples
+## Usage Examples
 
 ### Example 1: Execute Read-Only Operation
 
@@ -121,7 +121,7 @@ metrics.forEach((key, value) -> System.out.println(key + ": " + value + " ms"));
 
 ---
 
-# ⏱ Performance Metrics
+# Performance Metrics
 
 The following metrics are collected for every LDAP operation:
 
@@ -141,7 +141,7 @@ metrics.forEach((key, value) -> System.out.println(key + ": " + value + " ms"));
 
 ---
 
-# 🧪 Test Cases
+# Test Cases
 
 ### Included Test Cases
 
@@ -160,7 +160,7 @@ metrics.forEach((key, value) -> System.out.println(key + ": " + value + " ms"));
 
 ---
 
-# 🤝 Contributing
+# Contributing
 
 Contributions are welcome! To contribute:
 
@@ -170,7 +170,7 @@ Contributions are welcome! To contribute:
 
 ---
 
-# 📄 License
+# License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
