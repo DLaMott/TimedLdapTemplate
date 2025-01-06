@@ -69,17 +69,6 @@ publishing {
                 }
             }
         }
-
-        repositories {
-            maven {
-                name = "SonatypeOSS"
-                url = uri("https://central.sonatype.com/api/v1/publisher/upload")
-                credentials {
-                    username = (project.findProperty("sonatypeUsername") ?: System.getenv("SONATYPE_USERNAME")).toString()
-                    password = (project.findProperty("sonatypePassword") ?: System.getenv("SONATYPE_PASSWORD")).toString()
-                }
-            }
-        }
     }
 }
 
