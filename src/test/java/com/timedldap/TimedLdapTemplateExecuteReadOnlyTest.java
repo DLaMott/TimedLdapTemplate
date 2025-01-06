@@ -4,12 +4,10 @@ import com.unboundid.ldap.listener.InMemoryDirectoryServer;
 import com.unboundid.ldap.listener.InMemoryDirectoryServerConfig;
 import com.unboundid.ldap.sdk.LDAPException;
 import com.unboundid.ldif.LDIFReader;
-import org.springframework.ldap.NamingException;
 import org.springframework.ldap.core.ContextExecutor;
 import org.springframework.ldap.core.support.LdapContextSource;
 
 import javax.naming.NamingEnumeration;
-import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import java.io.ByteArrayInputStream;
