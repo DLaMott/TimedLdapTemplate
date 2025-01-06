@@ -131,8 +131,10 @@ The following metrics are collected for every LDAP operation:
 
 You can access the metrics using:
 
+```java
 Map<String, Long> metrics = TimedLdapTemplate.getMetrics();
 metrics.forEach((key, value) -> System.out.println(key + ": " + value + " ms"));
+```
 
 #### Note:
 - Metrics are thread-local, ensuring no cross-contamination between threads.
