@@ -17,8 +17,23 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+/**
+ * Example test class to demonstrate the usage of {@link TimedLdapTemplate#executeReadOnly(ContextExecutor)}
+ * with an in-memory LDAP server.
+ * <p>
+ * This test illustrates:
+ * - Setting up an in-memory LDAP server for testing purposes.
+ * - Using the {@code executeReadOnly} method of {@link TimedLdapTemplate} to perform read-only LDAP operations.
+ * - Collecting and displaying performance metrics for LDAP operations.
+ */
 public class TimedLdapTemplateExecuteReadOnlyTest {
 
+    /**
+     * Main method to execute the test.
+     *
+     * @param args command-line arguments (not used).
+     * @throws LDAPException if an error occurs while setting up the LDAP server or executing LDAP operations.
+     */
     public static void main(String[] args) throws LDAPException, LDAPException {
         // Set up an in-memory LDAP server
         InMemoryDirectoryServerConfig config = new InMemoryDirectoryServerConfig("dc=example,dc=com");

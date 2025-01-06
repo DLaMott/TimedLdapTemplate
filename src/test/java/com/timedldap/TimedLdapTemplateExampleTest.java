@@ -15,8 +15,26 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Example test class to demonstrate the usage of the {@link TimedLdapTemplate} with an in-memory LDAP server.
+ * <p>
+ * This test class sets up an in-memory LDAP server using the UnboundID LDAP SDK, populates it with sample data,
+ * and performs LDAP operations while collecting metrics on the performance of the operations.
+ * <p>
+ * Key Features:
+ * - Demonstrates how to configure and use {@link TimedLdapTemplate}.
+ * - Provides an example of setting up an in-memory LDAP server for testing.
+ * - Illustrates how to measure performance metrics for LDAP operations.
+ */
 public class TimedLdapTemplateExampleTest {
 
+    /**
+     * Main method to execute the test.
+     *
+     * @param args command-line arguments (not used).
+     * @throws LDAPException if an error occurs while setting up the LDAP server.
+     * @throws IOException   if an error occurs while importing LDIF data.
+     */
     public static void main(String[] args) throws LDAPException, IOException {
 
         // Set up an in-memory LDAP server

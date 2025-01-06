@@ -1,9 +1,17 @@
 plugins {
     id("java")
+    id("maven-publish")
+
 }
 
-group = "org.ldap"
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+group = "io.github.dlamott"  // Update group to your GitHub namespace
 version = "1.0-SNAPSHOT"
+
 
 repositories {
     mavenCentral()
@@ -25,3 +33,54 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// Publishing configuration
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            groupId = "io.github.dlamott"
+            artifactId = "timed-ldap-template"
+            version = "1.0-SNAPSHOT"
+
+            // POM file configuration
+            pom {
+                name.set("Timed LDAP Template")
+                description.set("A library that extends Spring LDAP Template with metrics tracking.")
+                url.set("https://github.com/DLaMott/TimedLdapTemplate") // Replace with your project URL
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("dlamott")
+                        name.set("Dylan")
+                        email.set("dylanlamott@gmail.com") // Replace with your email
+                    }
+                }
+                scm {
+                    connection.set("scm:git:https://github.com/DLaMott/TimedLdapTemplate.git") // Replace with your repository URL
+                    developerConnection.set("scm:git:ssh://github.com/DLaMott/TimedLdapTemplate.git") // Replace with your repository URL
+                    url.set("https://github.com/DLaMott/TimedLdapTemplate") // Replace with your repository URL
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "SonatypeOSS"
+                url = uri("https://central.sonatype.com/api/v1/publisher/upload")
+                credentials {
+                    username = (project.findProperty("sonatypeUsername") ?: System.getenv("SONATYPE_USERNAME")).toString()
+                    password = (project.findProperty("sonatypePassword") ?: System.getenv("SONATYPE_PASSWORD")).toString()
+                }
+            }
+        }
+    }
+}
+
+

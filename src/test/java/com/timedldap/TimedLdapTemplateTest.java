@@ -18,6 +18,14 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the {@link TimedLdapTemplate} class.
+ * <p>
+ * This test class demonstrates:
+ * - Mocking Spring LDAP components to test functionality in isolation.
+ * - Verifying the behavior of {@code executeReadOnly()} and {@code search()} methods.
+ * - Handling exceptions and validating performance metrics collection.
+ */
 public class TimedLdapTemplateTest {
     @Mock
     private LdapContextSource contextSource;
@@ -35,6 +43,12 @@ public class TimedLdapTemplateTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the {@code executeReadOnly()} method to ensure it executes a read-only LDAP operation
+     * and collects performance metrics.
+     *
+     * @throws NamingException if an error occurs while interacting with the LDAP context.
+     */
     @Test
     public void testExecuteReadOnly() throws NamingException {
         when(contextSource.getReadOnlyContext()).thenReturn(dirContext);
@@ -51,6 +65,11 @@ public class TimedLdapTemplateTest {
         assertTrue(metrics.containsKey("release"));
     }
 
+    /**
+     * Tests the {@code search()} method to ensure it throws an exception when the context source fails.
+     *
+     * @throws NamingException if an error occurs during the search operation.
+     */
     @Test
     public void testSearchThrowsException() throws NamingException {
         when(contextSource.getReadOnlyContext()).thenThrow(new RuntimeException("Execution of Ldap callback failed: {}"));
@@ -61,5 +80,4 @@ public class TimedLdapTemplateTest {
 
         assertEquals("Execution of Ldap callback failed: {}", exception.getMessage());
     }
-
 }
